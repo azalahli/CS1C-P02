@@ -4,7 +4,7 @@ import java.util.*;
 
 /**
  * Subset sum finder for an all positive set
- * @author Myron Pow
+ * @author Myron Pow 4/21/2017
  */
 public class SubsetSum {
     private static ArrayList<Sublist> masterSet = new ArrayList<Sublist>();

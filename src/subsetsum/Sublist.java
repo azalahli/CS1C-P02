@@ -35,6 +35,12 @@ class Sublist implements Cloneable
         return newObject;
     }
 
+    /**
+     *
+     * @param indexOfItemToAdd the index location of object to add
+     * @return subset with item added
+     * @throws CloneNotSupportedException
+     */
     Sublist addItem( int indexOfItemToAdd) throws CloneNotSupportedException{
         Sublist subset = (Sublist)clone();
         subset.indices.add(indexOfItemToAdd);
@@ -42,12 +48,19 @@ class Sublist implements Cloneable
         return subset;
     }
 
+    /**
+     * Prints out the sublist
+     */
     void showSublist(){
         for (int i  = 0; i < indices.size(); i++){
             System.out.println("Set desired:" + originalObjects.get((indices.get(i))));
         }
     }
 
+    /**
+     * Function generates a subset from a set
+     * @return arraylist containing subset
+     */
     public ArrayList<Double> generateSubSet(){
         ArrayList<Double> newSubSet = new ArrayList<Double>();
         for(int i = 0; i < indices.size(); i++){

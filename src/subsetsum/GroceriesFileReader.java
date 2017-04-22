@@ -1,13 +1,17 @@
 package subsetsum;
 import java.io.File;
-import java.io.*;
 import java.io.FileNotFoundException;
 import java.util.*;
 
 /**
- * Created by Mober6 on 4/21/2017.
+ * Parses a file for numbers to cast to double, and then add them to an arraylist
+ * @author Myron Pow 4/21/2017
  */
 public class GroceriesFileReader {
+    /**
+     * @param location is path of file to parse
+     * @return arraylist that contains doubles
+     */
     public ArrayList<Double> readFile(String location){
         ArrayList<Double> shopInventory = new ArrayList<Double>();
         final String delimiter = ",";
