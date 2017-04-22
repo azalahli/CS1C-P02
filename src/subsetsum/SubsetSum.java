@@ -3,16 +3,66 @@ import java.util.*;
 
 
 /**
- * Created by Mober6 on 4/20/2017.
+ * Subset sum finder for an all positive set
+ * @author Myron Pow
  */
 public class SubsetSum {
-    private ArrayList<Double> subSets = new ArrayList<Double>();
-    private double sum = 0;
-    // Sums up a set, and sets sum to the result
+    private static ArrayList<Sublist> masterSet = new ArrayList<Sublist>();
+    private static ArrayList<Double> targetSet;
+
+    /**
+     *
+     * @param shoppingList is a list of purchasable items, inside an arraylist
+     * @param budget is a double, which is how much money you have to spend
+     * @return is the set that is closest to the budget
+     */
+    public static ArrayList<Double> findSubset(ArrayList<Double> shoppingList, double budget){
+        Sublist initialSublist = new Sublist(shoppingList);
+        masterSet.add(initialSublist);
+
+        for(int i = 0; i < shoppingList.size(); i++){
+            for (int j = 0; j < masterSet.size() - j; j++){
+                Sublist tempSublist = masterSet.get(j);
+                double sumOfSet = tempSublist.getSum() + shoppingList.get(i);
+
+                if(sumOfSet == budget){
+                    break;
+                }
+                if(sumOfSet < budget){
+                    try{
+                        masterSet.add(tempSublist.addItem(i));
+                    }
+                    catch (CloneNotSupportedException error) {
+                        error.printStackTrace();
+                    }
+                }
+            }
+        }
+
+        double closestSum = masterSet.get(0).getSum();
+        int closestIndex = 0;
 
 
 
+        for(int i = 0; i < masterSet.size(); i++){
+            if (masterSet.get(i).getSum() > closestSum){
+                closestSum = masterSet.get(i).getSum();
+                closestIndex = i;
+            }
+        }
 
+        System.out.println("hi" + closestSum);
+        System.out.println("m2" + closestIndex);
+
+        targetSet = masterSet.get(closestIndex).generateSubSet();
+        return targetSet;
+    }
+
+
+    /**
+     * Initial work towards subset sum problem
+     */
+    /*
     public void sumSet(){
         double sumOfSet =0;
         for(int i = 1; i < subSets.size(); i++){
@@ -33,5 +83,6 @@ public class SubsetSum {
             }
         }
     }
+    */
 
 }
