@@ -26,6 +26,12 @@ public class SubsetSum {
                 double sumOfSet = tempSublist.getSum() + shoppingList.get(i);
 
                 if(sumOfSet == budget){
+                    try{
+                        masterSet.add(tempSublist.addItem(i));
+                    }
+                    catch (CloneNotSupportedException error) {
+                        error.printStackTrace();
+                    }
                     break;
                 }
                 if(sumOfSet < budget){
@@ -51,9 +57,10 @@ public class SubsetSum {
             }
         }
 
+        /* Set is/was outputting set target - first element
         System.out.println("hi" + closestSum);
         System.out.println("m2" + closestIndex);
-
+        */
         targetSet = masterSet.get(closestIndex).generateSubSet();
         return targetSet;
     }

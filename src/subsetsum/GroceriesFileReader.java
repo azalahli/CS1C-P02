@@ -10,10 +10,10 @@ import java.util.*;
 public class GroceriesFileReader {
     public ArrayList<Double> readFile(String location){
         ArrayList<Double> shopInventory = new ArrayList<Double>();
-
+        final String delimiter = ",";
         try{
             Scanner input = new Scanner(new File(location));
-            final String delimiter = ",";
+
             while(input.hasNext()) {
                 String groceries = input.next();
 
